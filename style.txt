@@ -1,0 +1,10 @@
+.poster {
+    display: block;
+    margin: 30px auto;
+    max-width: 100%;
+    width: 80%;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: 6px solid #ffffff;
+    background-color: #ffffff;
+}
