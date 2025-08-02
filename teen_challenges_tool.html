@@ -576,7 +576,40 @@ Save at least 3–6 months of living expenses in a separate account</p>
 ">
   Submit Feedback
 </section>
+<form id="reviewForm">
+  <input type="text" id="name" placeholder="Your name" required />
+  <select id="rating">
+    <option value="5">★★★★★</option>
+    <option value="4">★★★★☆</option>
+    <option value="3">★★★☆☆</option>
+    <option value="2">★★☆☆☆</option>
+    <option value="1">★☆☆☆☆</option>
+  </select>
+  <textarea id="review" placeholder="Your review" required></textarea>
+  <button type="submit">Submit</button>
+</form>
 
+<div id="response"></div>
+
+<script>
+document.getElementById('reviewForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  fetch('https://script.google.com/macros/s/AKfycbxerpXBID6CBMLI-IIO5lLXCH9SpBdV-YGe2EuIJIPusmbeIOAnkQ9e2Sl7MUseXLIINA/exec', {
+    method: 'POST',
+    body: JSON.stringify({
+      name: document.getElementById('name').value,
+      rating: document.getElementById('rating').value,
+      review: document.getElementById('review').value
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(() => {
+    document.getElementById('response').innerText = "Thanks for your review!";
+  });
+});
+</script>
     <script>
         function showSection() {
             let sections = document.querySelectorAll(".section");
@@ -616,3 +649,4 @@ Save at least 3–6 months of living expenses in a separate account</p>
 
   <p>Author & Developer EDS | est. 2025</p>
 </footer>
+
